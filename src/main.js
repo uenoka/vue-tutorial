@@ -28,8 +28,10 @@ const app = new Vue({
     },
     methods:{
         doAdd: function(event,value){
-            var commnet = this.$refs.comment
-            if(!comment.calue.length) return
+            var comment = this.$refs.comment
+            if(!comment.value.length) {
+                return
+            }
             this.todos.push({
                 id: todoStorage.uid++,
                 comment: comment.value,
@@ -46,9 +48,14 @@ const app = new Vue({
         }
     },
     computed:{
+        labels(){
+            return this.options.reduce(function(a,b){
+                return Object.assign(a,{[b.value]:b.label})
+            },{})
+        },
         computedTodos:function(){
             return this.todos.filter(function(el){
-                return this.current<0 ? true : this/current === el.state
+                return this.current<0 ? true : this.current === el.state
             },this)
         }
     },

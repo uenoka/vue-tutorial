@@ -15,16 +15,84 @@ var todoStorage = {
         localStorage.setItem(STRRAGE_KEY,JSON.stringify(todos))
     }
 }
+Vue.use(VueMindmap)
 const app = new Vue({
     el:'#app',
     data:{
-        todos:[],
-        options:[
-            { value: -1, label: 'すべて' },
-            { value: 0,  label: '作業中' },
-            { value: 1,  label: '完了' }        
+        'nodes': [
+            {
+                'text': 'カバの樹',
+                'url': 'https://www.kabanoki.net',
+                'fx': 10,
+                'fy': 10,
+                'nodes': [
+                ],
+                'category': 'Blog'
+            },
+            {
+                'text': 'カテゴリー｜カバの樹',
+                'url': 'https://www.kabanoki.net',
+                'fx': -100,
+                'fy': 100,
+                'nodes': [
+                    {
+                        'text': 'vue.js',
+                        'url': 'https://www.kabanoki.net/category/vue-js/',
+                        'fx': 176.083777747024,
+                        'fy': -665.1641376795345,
+                        'nodes': [],
+                        'category': 'blog category vue',
+                        'color': 'rgba(255, 189, 10, 1.0)'
+                    },
+                    {
+                        'text': 'wordpress',
+                        'url': 'https://www.kabanoki.net/category/wordpress/',
+                        'fx': 176.083777747024,
+                        'fy': -665.1641376795345,
+                        'nodes': [],
+                        'category': 'blog category vue',
+                        'color': 'rgba(255, 189, 10, 1.0)'
+                    },
+                    {
+                        'text': 'codeigniter',
+                        'url': 'https://www.kabanoki.net/category/codeigniter/',
+                        'fx': 176.083777747024,
+                        'fy': -665.1641376795345,
+                        'nodes': [],
+                        'category': 'blog category vue',
+                        'color': 'rgba(255, 189, 10, 1.0)'
+                    },
+                ],
+                'category': 'Blog'
+            },
+            {
+                'text': '7月|カバの樹',
+                'url': 'https://www.kabanoki.net/date/2019/07/',
+                'fx': 450,
+                'fy': 100,
+                'nodes': [],
+                 
+                'category': 'Blog'
+            },
         ],
-        current: -1
+        'connections': [
+            {
+                'source': 'カバの樹',
+                'target': 'カテゴリー｜カバの樹',
+                'curve': {
+                'x': 10,
+                'y': 10
+                }
+            },
+            {
+                'source': 'カバの樹',
+                'target': '7月|カバの樹',
+                'curve': {
+                'x': 10,
+                'y': 10
+                }
+            },
+        ]
     },
     methods:{
         doAdd: function(event,value){
@@ -71,3 +139,4 @@ const app = new Vue({
         this.todos = todoStorage.fetch()
     }
 })
+

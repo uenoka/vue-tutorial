@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Vue.js App</title>
-  <link rel="stylesheet" href="main.css">
-</head>
-<body>
-  <div id="app">
-    <mindmap
-      :nodes="nodes"
-      :connections="connections"
-      :editable="true"
-      ></mindmap>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/vue-mindmap/dist/vue-mindmap.css"></link>
-  <script src="https://unpkg.com/vue-mindmap"></script>  
-  <script src="main.js"></script>
-</body>
+    <head>
+      <meta charset="utf-8">
+      <title>Vue.js App</title>
+      <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+      <div id="app">
+        <mindmap
+          :nodes="nodes"
+          :connections="connections"
+          :editable="true"
+          ></mindmap>
+        <form class="add-form" v-on:submit.prevent="doAdd">
+            Text <input type="text" ref="text">
+            <button type="submit">追加</button>
+        </form>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+      <link rel="stylesheet" href="https://unpkg.com/vue-mindmap/dist/vue-mindmap.css"></link>
+      <script src="https://unpkg.com/vue-mindmap"></script>  
+      <script src="main.js"></script>
+    </body>
 </html>
